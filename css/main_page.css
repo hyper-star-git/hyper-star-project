@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Press Start 2P','DotGothic16',monospace;
+}
+
+body{
+  background:#05070d;
+  color:#eaffea;
+  overflow-x:hidden;
+}
+
+/* ===============================
+   GRID BLOCK BACKGROUND (Minecraft style)
+================================ */
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at center, #00ff8844 0%, transparent 60%),
+    linear-gradient(#0f1f17 2px, transparent 2px),
+    linear-gradient(90deg,#0f1f17 2px, transparent 2px);
+  background-size:
+    100% 100%,
+    60px 60px,
+    60px 60px;
+  animation:gridMove 20s linear infinite;
+}
+
+@keyframes gridMove{
+  from{ background-position:0 0,0 0,0 0; }
+  to{ background-position:0 0,60px 60px,60px 60px; }
+}
+
+/* floating glowing squares (3D feel) */
+.pixel{
+  position:absolute;
+  width:40px;
+  height:40px;
+  border:2px solid #00ff88;
+  box-shadow:
+    0 0 10px #00ff88,
+    inset 0 0 10px #00ff88;
+  opacity:0.25;
+  animation: float 18s linear infinite;
+}
+
+@keyframes float{
+  from{ transform:translateY(110vh) rotateX(0deg) rotateY(0deg); }
+  to{ transform:translateY(-20vh) rotateX(360deg) rotateY(360deg); }
+}
+
+/* ===============================
+   NAVIGATION
+================================ */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  background:rgba(0,0,0,0.7);
+  border-bottom:2px solid #00ff88;
+  z-index:1000;
+}
+
+nav a{
+  color:#00ff88;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:12px;
+}
+
+nav a:hover{
+  color:#ffffff;
+  text-shadow:0 0 10px #00ff88;
+}
+
+/* ===============================
+   HERO
+================================ */
+.hero{
+  height:85vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-top:60px;
+}
+
+.hero h1{
+  font-size:36px;
+  color:#00ff88;
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 20px #00ff88,
+    0 0 40px #00ff88;
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:14px;
+  font-family:'DotGothic16',monospace;
+  color:#c8ffd8;
+}
+
+.hero video{
+  margin-top:30px;
+  width:70%;
+  max-width:700px;
+  border:3px solid #00ff88;
+  box-shadow:0 0 25px #00ff88;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+section{
+  margin:50px 8%;
+  padding:40px;
+  border:2px solid #00ff88;
+  background:rgba(0,20,10,0.8);
+  box-shadow:0 0 25px #00ff8844;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+section h2{
+  margin-bottom:25px;
+  font-size:18px;
+  color:#00ff88;
+}
+
+section p{
+  font-family:'DotGothic16',monospace;
+  font-size:14px;
+  line-height:1.8;
+}
+
+/* ===============================
+   CARDS
+================================ */
+.card-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.card{
+  padding:25px;
+  background:#07140d;
+  border:2px solid #00ff88;
+  text-align:center;
+  transition:0.3s;
+  font-family:'DotGothic16',monospace;
+}
+
+.card:hover{
+  background:#00ff8811;
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00ff88;
+}
+
+/* ===============================
+   TOC DOTS
+================================ */
+.toc{
+  position:fixed;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.toc a{
+  width:14px;
+  height:14px;
+  background:#00ff8844;
+  border:2px solid #00ff88;
+  display:block;
+}
+
+.toc a:hover{
+  background:#00ff88;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  margin-top:30px;
+  border-top:2px solid #00ff88;
+  font-size:12px;
+}
