@@ -13,47 +13,81 @@ body{
   overflow-x:hidden;
 }
 
-/* ===============================
+/* =============================== 
    GRID BLOCK BACKGROUND (Minecraft style)
-================================ */
-.background{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  background:
+================================ */ 
+.background{ 
+  position:fixed; inset:0; z-index:-1; 
+  
+  background: 
     radial-gradient(circle at center, #00ff8844 0%, transparent 60%),
     linear-gradient(#0f1f17 2px, transparent 2px),
     linear-gradient(90deg,#0f1f17 2px, transparent 2px);
-  background-size:
-    100% 100%,
-    60px 60px,
-    60px 60px;
-  animation:gridMove 20s linear infinite;
+  
+  background-size: 100% 100%, 60px 60px, 60px 60px; 
+  animation:gridMove 5s linear infinite; /* グリッドを動かす */
 }
 
 @keyframes gridMove{
-  from{ background-position:0 0,0 0,0 0; }
-  to{ background-position:0 0,60px 60px,60px 60px; }
+  from{
+    background-position:0 0,0 0,0 0; 
+  }
+  to{
+    background-position:0 0,60px 60px,60px 60px; 
+  }
 }
 
-/* floating glowing squares (3D feel) */
+@keyframes bgPulse{
+  from{opacity:0.6;}
+  to{opacity:1;}
+}
+
+/* floating glowing blocks */
 .pixel{
   position:absolute;
   width:40px;
   height:40px;
-  border:2px solid #00ff88;
-  box-shadow:
-    0 0 10px #00ff88,
-    inset 0 0 10px #00ff88;
-  opacity:0.25;
-  animation: float 18s linear infinite;
+  transform-style:preserve-3d;
+  animation: float linear infinite;
+  /* animation delay で順番待ちしている間、初期位置で待機させる */
+  animation-fill-mode: backwards;
 }
+
+.pixel div{
+  position:absolute;
+  width:40px;
+  height:40px;
+  background:rgba(0,255,136,0.07);   /* 薄く */
+  border:1px solid rgba(0,255,136,0.4);
+  box-shadow:0 0 6px rgba(0,255,136,0.4);
+}
+
+/* 6面 */
+.pixel .front  { transform:translateZ(20px); }
+.pixel .back   { transform:rotateY(180deg) translateZ(20px); }
+.pixel .right  { transform:rotateY(90deg) translateZ(20px); }
+.pixel .left   { transform:rotateY(-90deg) translateZ(20px); }
+.pixel .top    { transform:rotateX(90deg) translateZ(20px); }
+.pixel .bottom { transform:rotateX(-90deg) translateZ(20px); }
 
 @keyframes float{
-  from{ transform:translateY(110vh) rotateX(0deg) rotateY(0deg); }
-  to{ transform:translateY(-20vh) rotateX(360deg) rotateY(360deg); }
+  from{
+    transform:
+      translate3d(var(--x), 110vh, var(--z))
+      rotateX(var(--rx))
+      rotateY(var(--ry));
+  }
+  to{
+    transform:
+      translate3d(
+        var(--x),
+        -100px,
+        var(--z)
+      )
+      rotateX(calc(var(--rx) + 360deg))
+      rotateY(calc(var(--ry) + 360deg));
+  }
 }
-
 /* ===============================
    NAVIGATION
 ================================ */
@@ -204,4 +238,58 @@ footer{
   margin-top:30px;
   border-top:2px solid #00ff88;
   font-size:12px;
+}
+
+/* ===============================
+   シリアル(キーワード入力)
+================================ */
+
+.serial-box{
+  margin-top:30px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.serial-box input{
+  padding:15px 20px;
+  background:#07140d;
+  border:2px solid #00ff88;
+  color:#00ff88;
+  font-family:'DotGothic16',monospace;
+  font-size:16px;
+  width:300px;
+  transition:0.3s;
+}
+
+.serial-box input:focus{
+  outline:none;
+  box-shadow:0 0 15px #00ff88;
+}
+
+.serial-box button{
+  padding:15px 25px;
+  background:#00ff88;
+  border:none;
+  color:#05070d;
+  cursor:pointer;
+  font-family:'Press Start 2P',monospace;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.serial-box button:hover{
+  box-shadow:0 0 15px #00ff88;
+}
+
+@media (min-width: 1024px){
+  .serial-box input{
+    width:500px;
+    font-size:18px;
+  }
+
+  .serial-box button{
+    font-size:16px;
+  }
 }
