@@ -68,10 +68,14 @@ serialBtn.addEventListener("click", async () => {
 
   try {
     //Netlify Functionに送信.
-    const res = await fetch("/.netlify/functions/checkKeyword", {
-      method: "POST",
-      body: JSON.stringify({ keyword: input })
-    });
+    const res = await fetch(
+      "/.netlify/functions/check_keywords", //ファイルパス.
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, //拡張子は".js"
+        body: JSON.stringify({ keyword: input })
+      }
+    );
     //結果を受け取る.
     const data = await res.json();
 
@@ -81,12 +85,24 @@ serialBtn.addEventListener("click", async () => {
     }
     //失敗. 
     else {
+      serialFailure();
     }
+
+    serialInput.value = ""; //入力欄を空に.
   } 
   //エラー.
   catch (err) {
     console.error(err);
+    serialInput.value = "Error: 通信エラーが発生しました";
+    serialFailure();
   }
-  
-  serialInput.value = ""; //入力欄を空に.
 });
+
+//失敗演出.
+function serialFailure(){
+  serialInput.classList.add("shake"); //class追加.
+  //アニメーション終了後にclassを外す.
+  serialInput.addEventListener("animationend", () => {
+  serialInput.classList.remove("shake");
+  }, { once: true });
+}
