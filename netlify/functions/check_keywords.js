@@ -11,17 +11,19 @@ exports.handler = async (event, context) => {
       "STAR": "pages/keyword_star.html",
       "ﾆｮｮｮｮ": "pages/keyword_nyo.html",
     };
-    //URL作成.
-    const url = "https://hyper-star-project.netlify.app/" + keywords[keyword?.toUpperCase()];
-
-    //URLがあれば.
-    if (url) {
+    //ファイル取得.
+    const matchedUrl = keywords[keyword?.toUpperCase()];
+    
+    //キーワード正解.
+    if (matchedUrl) {
+      //URL作成.
+      const url = "https://hyper-star-project.netlify.app/" + matchedUrl;
       return {
         statusCode: 200,
         body: JSON.stringify({ success: true, url }),
       };
     } 
-    //URLがなければ.
+    //キーワード不正解.
     else {
       return {
         statusCode: 200,
