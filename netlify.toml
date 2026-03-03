@@ -1,0 +1,3 @@
+[build]
+  publish = "public"                 # 静的ファイルを置くフォルダ
+  functions = "netlify/functions"    # サーバー側で動く関数フォルダ
