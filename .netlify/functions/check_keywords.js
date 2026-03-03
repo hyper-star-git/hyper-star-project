@@ -1,6 +1,6 @@
 /*
-   netlify専用機能。
-   指定フォルダ(デフォルトはnetlify/functions/)内のjsは、サーバー側で動かしてくれる。
+   指定フォルダ内のjsは、netlify(サーバー)側で動かしてくれる。
+   デフォルトパスは「netlify/functions/」
 */
 exports.handler = async (event, context) => {
   try {
