@@ -4,7 +4,6 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Press Start 2P','DotGothic16',monospace;
 }
 
 :root {
@@ -21,6 +20,19 @@ body{
   background:#05070d;
   color:#eaffea;
   overflow-x:hidden;
+}
+
+/* =============================== 
+  font
+================================ */ 
+.font-jp{
+  font-family:'DotGothic16', monospace;
+}
+.font-en{
+  font-family:'Press Start 2P', monospace;
+  font-size: 0.9em;
+  position: relative;
+  top: 2px; /* 高さの微調整 */
 }
 
 /* =============================== 
@@ -159,6 +171,10 @@ footer{
     0 0 4px #00ff88,
     0 0 8px rgba(0,255,136,0.6),
     0 0 16px rgba(0,255,136,0.3);
+
+  /* スマホ用 */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .hero p{
@@ -222,7 +238,6 @@ footer{
   border:2px solid #00ff88;
   text-align:center;
   transition:0.3s;
-  font-family:'DotGothic16',monospace;
 }
 
 .card:hover{
@@ -242,43 +257,52 @@ footer{
   flex-wrap:wrap;
 }
 
+/* 入力欄 */
 .serial-box input{
-  padding:15px 20px;
+  width:100%;
+  max-width:480px;
+  box-sizing:border-box;
+  padding:14px 18px;
+
   background:#07140d;
   border:2px solid #00ff88;
   color:#00ff88;
+
   font-family:'DotGothic16',monospace;
   font-size:16px;
-  width:300px;
+
   transition:0.3s;
 }
 
+/* フォーカス */
 .serial-box input:focus{
   outline:none;
-  box-shadow:0 0 15px #00ff88;
+  box-shadow:0 0 8px rgba(0,255,136,0.6);
 }
 
+/* ボタン */
 .serial-box button{
-  padding:15px 25px;
+  padding:14px 22px;
   background:#00ff88;
   border:none;
   color:#05070d;
+
   cursor:pointer;
-  font-family:'Press Start 2P',monospace;
   font-size:14px;
+
   transition:0.3s;
 }
 
 .serial-box button:hover{
-  box-shadow:0 0 15px #00ff88;
+  box-shadow:0 0 8px rgba(0,255,136,0.6);
 }
 
-@media (min-width: 1024px){
+/* PCレイアウト */
+@media (min-width:1024px){
   .serial-box input{
-    width:500px;
+    max-width:500px;
     font-size:18px;
   }
-
   .serial-box button{
     font-size:16px;
   }

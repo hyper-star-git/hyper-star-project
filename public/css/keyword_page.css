@@ -23,12 +23,3 @@
   height: auto;      /* 高さ自動 */
   border: none;
 }
-
-/* ===============================
-   NAVIGATION
-================================ */
-nav .en {
-  font-size: 0.9em;
-  position: relative;
-  top: 2px; /* 高さの微調整 */
-}
