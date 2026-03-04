@@ -11,6 +11,7 @@ exports.handler = async (event, context) => {
     const keywords = {
       "STAR": "pages/kw_star_f3a91c8x.html",
       "ﾆｮｮｮｮ": "pages/kw_nyo_7d2k91ax.html",
+      "LV32到達！": "pages/kw_lv32_91a7xk3v.html",
     };
     //ファイル取得.
     const matchedUrl = keywords[keyword?.toUpperCase()];
