@@ -12,46 +12,53 @@
 </head>
 <body>
 
+<!-- 背景用 -->
 <div id="bg" class="background"></div>
 
 <nav>
   <div class="font-jp">メインぺージ</div>
 </nav>
 
-<div class="hero">
-  <h1 class="font-en">HYPER STAR PROJECT</h1>
-  <video controls autoplay muted loop>
-    <source src="sample.mp4" type="video/mp4">
-  </video>
-</div>
+<!-- コンテンツ -->
+<main>
+  <!-- ページ遷移用 -->
+  <div id="page-transition"></div>
 
-<section id="projects" class="content-box">
-  <h2 class="font-en">PROJECTS</h2>
-  <div class="font-jp">
-    各シリーズの詳細を見れます
+  <div class="hero">
+    <h1 class="font-en">HYPER STAR PROJECT</h1>
+    <video controls autoplay muted loop>
+      <source src="sample.mp4" type="video/mp4">
+    </video>
   </div>
-  <br>
-
-  <div class="card-container">
-    <div class="card font-jp">人狼PvP</div>
-    <div class="card font-jp">サバイバル</div>
-    <div class="card font-jp">誕生日動画</div>
-  </div>
-</section>
-
-<section id="serial" class="content-box">
-  <h2 class="font-en">KEYWORD</h2>
-  <div class="font-jp">
-    キーワードを打つと何かあるかも・・・？
-  </div>
-
-  <div class="serial-box">
-    <input type="text" id="serial-input" placeholder="キーワードを入力">
-    <button id="serial-btn">
-      <span class="font-en">OK</span>
-    </button>
-  </div>
-</section>
+  
+  <section id="projects" class="content-box">
+    <h2 class="font-en">PROJECTS</h2>
+    <div class="font-jp">
+      各シリーズの詳細を見れます
+    </div>
+    <br>
+  
+    <div class="card-container">
+      <div class="card font-jp">人狼PvP</div>
+      <div class="card font-jp">サバイバル</div>
+      <div class="card font-jp">誕生日動画</div>
+    </div>
+  </section>
+  
+  <section id="serial" class="content-box">
+    <h2 class="font-en">KEYWORD</h2>
+    <div class="font-jp">
+      キーワードを打つと何かあるかも・・・？
+    </div>
+  
+    <div class="serial-box">
+      <input type="text" id="serial-input" placeholder="キーワードを入力">
+      <button id="serial-btn">
+        <span class="font-en">OK</span>
+      </button>
+    </div>
+  </section>
+</main>
 
 <footer class="font-jp">
   © 2026 HYPER STAR<br>

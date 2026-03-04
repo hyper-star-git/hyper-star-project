@@ -33,13 +33,13 @@ for(let i=0;i<70;i++){
   pixel.style.setProperty("--rx", Math.random()*360+"deg");
   pixel.style.setProperty("--ry", Math.random()*360+"deg");
 
-  // 横揺れ
+  //横揺れ.
   pixel.style.setProperty("--dx", (Math.random()*100 - 50)+"px");
 
   pixel.style.animationDuration = 15 + Math.random()*15 + "s";
   pixel.style.animationDelay = i * 0.5 + "s"; //順番に出現させる.
   
-  // 6面を追加.
+  //6面を追加.
   const faces = ["front","back","right","left","top","bottom"];
   faces.forEach(f=>{
     const face = document.createElement("div");
@@ -63,6 +63,8 @@ serialBtn?.addEventListener("click", async () => {
   const input = serialInput.value.trim().toUpperCase();
   if (!input) return;
 
+  serialSuccess("http://192.168.56.102/hyper-star-project/ver1/public/pages/kw_star_f3a91c8x.html"); //ページ移動.
+
   try {
     //Netlify Functionに送信.
     const res = await fetch(
@@ -78,7 +80,7 @@ serialBtn?.addEventListener("click", async () => {
 
     //成功.
     if (data.success) {
-      window.location.href = data.url; //ページ移動.
+      serialSuccess(data.url); //ページ移動.
     }
     //失敗. 
     else {
@@ -95,6 +97,16 @@ serialBtn?.addEventListener("click", async () => {
   }
 });
 
+//成功演出.
+function serialSuccess(url){
+  const t = document.getElementById("page-transition");
+  t.classList.add("active");
+
+  setTimeout(()=>{
+    window.location.href = url;
+  }, 400);
+}
+
 //失敗演出.
 function serialFailure(){
   serialInput.classList.add("shake"); //class追加.
@@ -103,3 +115,22 @@ function serialFailure(){
   serialInput.classList.remove("shake");
   }, { once: true });
 }
+
+/* ===============================
+  ページ遷移
+================================ */
+const t = document.getElementById("page-transition");
+
+//ページ読み込み時.
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    t.classList.remove("active");
+  }, 50);
+});
+
+//戻る/進むでキャッシュから復帰した時.
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    t.classList.remove("active");
+  }
+});
