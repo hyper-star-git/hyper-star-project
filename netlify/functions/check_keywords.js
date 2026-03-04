@@ -7,9 +7,10 @@ exports.handler = async (event, context) => {
     const { keyword } = JSON.parse(event.body);
 
     //キーワード & htmlファイル.
+    //ファイル名を特定されないよう、後ろに意味のない8文字を付けている.
     const keywords = {
-      "STAR": "pages/keyword_star.html",
-      "ﾆｮｮｮｮ": "pages/keyword_nyo.html",
+      "STAR": "pages/kw_star_f3a91c8x.html",
+      "ﾆｮｮｮｮ": "pages/kw_nyo_7d2k91ax.html",
     };
     //ファイル取得.
     const matchedUrl = keywords[keyword?.toUpperCase()];

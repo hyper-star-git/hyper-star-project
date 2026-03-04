@@ -1,3 +1,10 @@
 [build]
-  publish = "public"                 # 静的ファイルを置くフォルダ
+  publish   = "public"               # 静的ファイルを置くフォルダ
   functions = "netlify/functions"    # サーバー側で動く関数フォルダ
+
+#
+# publishで指定したフォルダ内のみ、アクセス可能になる。
+# 
+# 例えば「public/js/main_page.js」は「https://hyper-star-project.netlify.app/js/main_page.js」でアクセス可能。
+# →publicより外のフォルダにはアクセスできない。
+#

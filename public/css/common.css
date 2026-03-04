@@ -7,14 +7,24 @@
   font-family:'Press Start 2P','DotGothic16',monospace;
 }
 
+:root {
+  /* 変数 */
+  --header-height:60px;
+  --cube-size: clamp(16px, 4vw, 40px);
+}
+
 body{
+  /* 余白 */
+  padding-top: var(--header-height);
+  box-sizing: border-box;
+
   background:#05070d;
   color:#eaffea;
   overflow-x:hidden;
 }
 
 /* =============================== 
-   GRID BLOCK BACKGROUND (Minecraft style)
+  GRID BLOCK BACKGROUND (Minecraft style)
 ================================ */ 
 .background{ 
   position:fixed; inset:0; z-index:-1; 
@@ -45,30 +55,30 @@ body{
 /* floating glowing blocks */
 .pixel{
   position:absolute;
-  width:40px;
-  height:40px;
+  width:var(--cube-size);
+  height:var(--cube-size);
   transform-style:preserve-3d;
   animation: float linear infinite;
   /* animation delay で順番待ちしている間、初期位置で待機させる */
-  animation-fill-mode: backwards;
+  animation-fill-mode: backwards; 
 }
 
 .pixel div{
   position:absolute;
-  width:40px;
-  height:40px;
-  background:rgba(0,255,136,0.07);   /* 薄く */
+  width:var(--cube-size);
+  height:var(--cube-size);
+  background:rgba(0,255,136,0.07);
   border:1px solid rgba(0,255,136,0.4);
   box-shadow:0 0 6px rgba(0,255,136,0.4);
 }
 
 /* 6面 */
-.pixel .front  { transform:translateZ(20px); }
-.pixel .back   { transform:rotateY(180deg) translateZ(20px); }
-.pixel .right  { transform:rotateY(90deg) translateZ(20px); }
-.pixel .left   { transform:rotateY(-90deg) translateZ(20px); }
-.pixel .top    { transform:rotateX(90deg) translateZ(20px); }
-.pixel .bottom { transform:rotateX(-90deg) translateZ(20px); }
+.pixel .front  { transform:translateZ(calc(var(--cube-size)/2)); }
+.pixel .back   { transform:rotateY(180deg) translateZ(calc(var(--cube-size)/2)); }
+.pixel .right  { transform:rotateY(90deg) translateZ(calc(var(--cube-size)/2)); }
+.pixel .left   { transform:rotateY(-90deg) translateZ(calc(var(--cube-size)/2)); }
+.pixel .top    { transform:rotateX(90deg) translateZ(calc(var(--cube-size)/2)); }
+.pixel .bottom { transform:rotateX(-90deg) translateZ(calc(var(--cube-size)/2)); }
 
 @keyframes float{
   from{
@@ -88,19 +98,23 @@ body{
       rotateY(calc(var(--ry) + 360deg));
   }
 }
+
 /* ===============================
-   NAVIGATION
+  NAVIGATION
 ================================ */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:15px 30px;
-  display:flex;
-  justify-content:space-between;
-  background:rgba(0,0,0,0.7);
-  border-bottom:2px solid #00ff88;
-  z-index:1000;
+/* ヘッダー */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-height); /* 高さを変数で設定 */
+  line-height: var(--header-height); /* テキスト垂直中央揃え */
+  padding: 0 30px; /* 左右の余白は残す */
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.7);
+  border-bottom: 2px solid #00ff88;
+  z-index: 1000;
 }
 
 nav a{
@@ -115,8 +129,16 @@ nav a:hover{
   text-shadow:0 0 10px #00ff88;
 }
 
+footer{
+  text-align:center;
+  padding:25px;
+  margin-top:30px;
+  border-top:2px solid #00ff88;
+  font-size:12px;
+}
+
 /* ===============================
-   HERO
+  HERO
 ================================ */
 .hero{
   height:85vh;
@@ -129,12 +151,14 @@ nav a:hover{
 }
 
 .hero h1{
-  font-size:36px;
+  font-size: clamp(28px, 6vw, 56px);
   color:#00ff88;
+  letter-spacing: 2px;
+
   text-shadow:
-    0 0 10px #00ff88,
-    0 0 20px #00ff88,
-    0 0 40px #00ff88;
+    0 0 4px #00ff88,
+    0 0 8px rgba(0,255,136,0.6),
+    0 0 16px rgba(0,255,136,0.3);
 }
 
 .hero p{
@@ -152,10 +176,10 @@ nav a:hover{
   box-shadow:0 0 25px #00ff88;
 }
 
-/* ===============================
-   SECTIONS
+/* =============================== 
+  CONTENT BOX
 ================================ */
-section{
+.content-box{
   margin:50px 8%;
   padding:40px;
   border:2px solid #00ff88;
@@ -166,25 +190,25 @@ section{
   transition:1s;
 }
 
-section.show{
+.content-box.show{
   opacity:1;
   transform:translateY(0);
 }
 
-section h2{
+.content-box h2{
   margin-bottom:25px;
   font-size:18px;
   color:#00ff88;
 }
 
-section p{
+.content-box p{
   font-family:'DotGothic16',monospace;
   font-size:14px;
   line-height:1.8;
 }
 
 /* ===============================
-   CARDS
+  CARDS
 ================================ */
 .card-container{
   display:grid;
@@ -208,42 +232,8 @@ section p{
 }
 
 /* ===============================
-   TOC DOTS
+  シリアル(キーワード入力)
 ================================ */
-.toc{
-  position:fixed;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.toc a{
-  width:14px;
-  height:14px;
-  background:#00ff8844;
-  border:2px solid #00ff88;
-  display:block;
-}
-
-.toc a:hover{
-  background:#00ff88;
-}
-
-footer{
-  text-align:center;
-  padding:25px;
-  margin-top:30px;
-  border-top:2px solid #00ff88;
-  font-size:12px;
-}
-
-/* ===============================
-   シリアル(キーワード入力)
-================================ */
-
 .serial-box{
   margin-top:30px;
   display:flex;

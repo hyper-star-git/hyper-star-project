@@ -1,18 +1,23 @@
 
 /* ===============================
-   Scroll Animation
+  スクロールアニメーション (content-boxのみ)
 ================================ */
-const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-      sec.classList.add("show");
+const sections = document.querySelectorAll(".content-box");
+
+//画面に入ったら出現.
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
     }
   });
+}, {
+  threshold: 0.1
 });
+sections.forEach(sec => observer.observe(sec));
 
 /* ===============================
-   Floating squares
+  浮遊キューブ
 ================================ */
 const bg = document.getElementById("bg");
 
@@ -46,21 +51,13 @@ for(let i=0;i<70;i++){
 }
 
 /* ===============================
-   シリアル(キーワード入力)
+  シリアル(キーワード入力)
 ================================ */
-const serialBtn     = document.getElementById("serialBtn");
-const serialInput   = document.getElementById("serialInput");
-//const secretContent = document.getElementById("secretContent");
-
-/*【キーワードリスト】*/
-const keywords = {
-  //"キーワード" : "開くモーダルID"
-  "STAR": "modal-star",
-  "ﾆｮｮｮｮ": "modal-nyo"
-};
+const serialInput = document.getElementById("serial-input");
+const serialBtn   = document.getElementById("serial-btn");
 
 //[OK]を押したら.
-serialBtn.addEventListener("click", async () => {
+serialBtn?.addEventListener("click", async () => {
 
   //大文字小文字どちらでもいいようにする.
   const input = serialInput.value.trim().toUpperCase();
