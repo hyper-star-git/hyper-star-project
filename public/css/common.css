@@ -50,7 +50,7 @@ main{
 /* =============================== 
   GRID BACKGROUND
 ================================ */ 
-.background{ 
+#bg{ 
   position:fixed;
   inset:0;
   z-index:-1;
@@ -74,8 +74,6 @@ main{
     40px 40px;   /* 縦線 */
 
   animation:gridMove 6s linear infinite;
-
-  /* background-blend-mode: overlay; */
 }
 @keyframes gridMove{
   from{
@@ -104,11 +102,20 @@ main{
 /* =============================== 
   FLOATING BLOCKS
 ================================ */ 
+#bg-cube{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+
 .pixel{
   position:absolute;
   width:var(--cube-size);
   height:var(--cube-size);
   transform-style:preserve-3d;
+  /* アニメーション無限ループ */
   animation: float linear infinite;
   /* animation delay で順番待ちしている間、初期位置で待機させる */
   animation-fill-mode: backwards; 

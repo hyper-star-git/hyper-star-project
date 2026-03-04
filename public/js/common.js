@@ -19,9 +19,10 @@ sections.forEach(sec => observer.observe(sec));
 /* ===============================
   浮遊キューブ
 ================================ */
-const bg = document.getElementById("bg");
+//オブジェクトを保存するタグ.
+const bg = document.getElementById("bg-cube");
 
-for(let i=0;i<70;i++){
+function createBgCube(i) {
   const pixel = document.createElement("div");
   pixel.className="pixel";
 
@@ -47,7 +48,13 @@ for(let i=0;i<70;i++){
     pixel.appendChild(face);
   });
 
-  bg.appendChild(pixel);
+  bg?.appendChild(pixel);
+}
+//初期生成.
+if (bg){
+  for(let i=0;i<70;i++){
+    createBgCube(i);
+  }
 }
 
 /* ===============================
