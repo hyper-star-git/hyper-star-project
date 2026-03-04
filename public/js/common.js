@@ -63,8 +63,6 @@ serialBtn?.addEventListener("click", async () => {
   const input = serialInput.value.trim().toUpperCase();
   if (!input) return;
 
-  serialSuccess("http://192.168.56.102/hyper-star-project/ver1/public/pages/kw_star_f3a91c8x.html"); //ページ移動.
-
   try {
     //Netlify Functionに送信.
     const res = await fetch(
