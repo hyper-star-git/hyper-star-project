@@ -20,7 +20,7 @@ sections.forEach(sec => observer.observe(sec));
   浮遊キューブ
 ================================ */
 //オブジェクトを保存するタグ.
-const bg = document.getElementById("bg-cube");
+const bg_cube = document.getElementById("bg-cube");
 
 function createBgCube(i) {
   const pixel = document.createElement("div");
@@ -48,12 +48,15 @@ function createBgCube(i) {
     pixel.appendChild(face);
   });
 
-  bg?.appendChild(pixel);
+  bg_cube?.appendChild(pixel);
 }
-//初期生成.
-if (bg){
+//生成処理.
+if (bg_cube){
+  //一定確率で生成.
   for(let i=0;i<70;i++){
-    createBgCube(i);
+    if(Math.random() <= 0.8){
+      createBgCube(i);
+    }
   }
 }
 

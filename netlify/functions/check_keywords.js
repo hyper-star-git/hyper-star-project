@@ -12,8 +12,9 @@ exports.handler = async (event, context) => {
       "STAR"     : "kw_star_f3a91c8x.html",
       "ﾆｮｮｮｮ"     : "kw_nyo_7d2k91ax.html",
       "LV32到達！": "kw_lv32_91a7xk3v.html",
-      "Minecraft": "kw_minecraft_a4k9q2bz.html",
-      "あ"       : "kw_a_m7v1r8xp.html"
+      "永遠の友達": "kw_forever_friend_a7f3k9q2.html",
+      "あ"       : "kw_a_m7v1r8xp.html",
+      "キーワード": "kw_keyword_a4k9q2bz.html",
     };
     //ファイル取得.
     const matchedUrl = keywords[keyword?.toUpperCase()];

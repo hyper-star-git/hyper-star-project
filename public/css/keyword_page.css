@@ -27,7 +27,6 @@
 /* ===============================
   「あ」の雨
 ================================ */
-
 .a-drop {
   position: absolute;
   top: -50px;
@@ -43,4 +42,128 @@
 @keyframes fall {
   0% { transform: translateY(0); opacity: var(--opacity); }
   100% { transform: translateY(90vh); opacity: 0; }
+}
+
+/* ===============================
+  文章の折りたたみ
+================================ */
+.spoiler-content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.8s ease;
+}
+
+/* 開いた状態 */
+.spoiler-content.show{
+  max-height:1000px;
+}
+
+.spoiler-btn{
+
+  display:block;
+
+  margin:0 auto;        /* 横中央だけ */
+  padding:10px 20px;
+
+  max-width:320px;     /* 横幅制限 */
+
+  background:#07140d;
+  color:#00ff88;
+
+  border:2px solid #00ff88;
+
+  font-family:'DotGothic16', monospace;
+  font-size:14px;
+
+  cursor:pointer;
+
+  box-shadow:0 0 10px #00ff8844;
+
+  transition:0.25s;
+}
+
+/* hover */
+
+.spoiler-btn:hover{
+  background:#00ff8811;
+  box-shadow:0 0 15px #00ff88;
+}
+
+/* 消える */
+
+.spoiler-btn.hide{
+
+  opacity:0;
+
+  height:0;
+  padding:0;
+  border:0;
+
+  overflow:hidden;
+
+  transition:0.3s;
+}
+
+/* ===============================
+  路線図
+================================ */
+.route{
+  width:320px;
+  margin:auto;
+}
+
+.route-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.station{
+  display:flex;
+  align-items:center;
+}
+
+.dot{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  margin-right:15px;
+  flex-shrink:0;
+}
+
+.line{
+  width:4px;
+  height:20px;
+  background:#808080;
+  margin-left:7px;
+}
+
+.name{
+  font-size:15px;
+}
+
+
+.bg-question{
+  position:fixed;
+  font-family:'Press Start 2P', monospace;
+  color:#00ff88;
+  text-shadow:0 0 10px #00ff88;
+
+  pointer-events:none;
+  z-index:-1;
+
+  animation: qfade 4s linear forwards;
+}
+
+@keyframes qfade{
+  0%{
+    opacity:0;
+    transform:scale(0.6);
+  }
+  20%{
+    opacity:0.7;
+  }
+  100%{
+    opacity:0;
+    transform:scale(1.4);
+  }
 }
