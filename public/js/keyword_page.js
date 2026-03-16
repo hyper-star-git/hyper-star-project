@@ -68,14 +68,14 @@ if (bg_q){
   文章の折りたたみ
 ================================ */
 document.querySelectorAll(".spoiler-btn").forEach(button => {
+
   button.addEventListener("click", function(){
 
     const section = this.closest("section");
     const content = section.querySelector(".spoiler-content");
 
-    content.classList.add("show");
-
-    this.classList.add("hide");
+    content.classList.toggle("open");
+    this.classList.toggle("open");
   });
 });
 

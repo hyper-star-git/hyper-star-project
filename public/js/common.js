@@ -2,7 +2,7 @@
 /* ===============================
   スクロールアニメーション (content-boxのみ)
 ================================ */
-const sections = document.querySelectorAll(".content-box");
+const sections = document.querySelectorAll(".content-box, .content-box-main");
 
 //画面に入ったら出現.
 const observer = new IntersectionObserver((entries) => {
