@@ -16,7 +16,7 @@ body{
   /* 余白 */
   padding-top: var(--header-height);
   box-sizing: border-box;
-
+  
   background:#05070d;
   color:#eaffea;
   overflow-x:hidden;
@@ -24,6 +24,7 @@ body{
   min-height:100vh;
   display:flex;
   flex-direction:column;
+  margin: 0;
 }
 
 html, body{
