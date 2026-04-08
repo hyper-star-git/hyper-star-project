@@ -1,6 +1,7 @@
 
 /* ===============================
-  スクロールアニメーション (content-boxのみ)
+  ▼ スクロールアニメーション ▼
+  (content-boxのみ)
 ================================ */
 const sections = document.querySelectorAll(".content-box, .content-box-main");
 
@@ -17,7 +18,7 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(sec => observer.observe(sec));
 
 /* ===============================
-  浮遊キューブ
+  ▼ 浮遊キューブ ▼
 ================================ */
 //オブジェクトを保存するタグ.
 const bg_cube = document.getElementById("bg-cube");
@@ -61,7 +62,8 @@ if (bg_cube){
 }
 
 /* ===============================
-  シリアル(キーワード入力)
+  ▼ シリアル ▼
+  (キーワード入力)
 ================================ */
 const serialInput = document.getElementById("serial-input");
 const serialBtn   = document.getElementById("serial-btn");
@@ -125,7 +127,7 @@ function serialFailure(){
 }
 
 /* ===============================
-  ページ遷移
+  ▼ ページ遷移 ▼
 ================================ */
 const t = document.getElementById("page-transition");
 
@@ -136,7 +138,7 @@ window.addEventListener("load", () => {
   }, 50);
 });
 
-//戻る/進むでキャッシュから復帰した時.
+//戻る,進むでキャッシュから復帰した時.
 window.addEventListener("pageshow", (event) => {
   if (event.persisted) {
     t.classList.remove("active");

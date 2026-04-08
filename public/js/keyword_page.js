@@ -1,6 +1,6 @@
 
 /* ===============================
-  背景 (あ)
+  ▼ 背景(あ) ▼
 ================================ */
 //オブジェクトを保存するタグ.
 const bg_a_drop = document.getElementById("bg-a-drop");
@@ -39,7 +39,7 @@ if (bg_a_drop){
 }
 
 /* ===============================
-  背景 (?)
+  ▼ 背景(?) ▼
 ================================ */
 //オブジェクトを保存するタグ.
 const bg_q = document.getElementById("bg-question");
@@ -65,7 +65,7 @@ if (bg_q){
 }
 
 /* ===============================
-  文章の折りたたみ
+  ▼ 文章の折りたたみ ▼
 ================================ */
 document.querySelectorAll(".spoiler-btn").forEach(button => {
 
@@ -80,7 +80,7 @@ document.querySelectorAll(".spoiler-btn").forEach(button => {
 });
 
 /* ===============================
-  路線図
+  ▼ 路線図 ▼
 ================================ */
 const dots = document.querySelectorAll(".dot");
 
